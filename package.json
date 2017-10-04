@@ -1,0 +1,20 @@
+{
+  "name": "myserver",
+  "version": "1.0.0",
+  "description": "firstserver",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "*",
+    "body-parser": "*",
+    "mongoose": "*"
+  },
+  "author": "john doe",
+  "license": "ISC",
+  "devDependencies": {
+    "dateformat": "^3.0.2"
+  }
+}
