@@ -38,9 +38,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // });
 
 // // include routes
-// app.use('/auth', require('./routes/authRouter'));
-// app.use('/api', require('./routes/apiRouter'));
-// app.use('/admin', require('./routes/adminRouter'));
+app.use('/auth', require('./routes/authRouter'));
+app.use('/api', require('./routes/apiRouter'));
+app.use('/admin', require('./routes/adminRouter'));
 
 // // serve static files from template
 // app.use(express.static(__dirname + '/public'));
