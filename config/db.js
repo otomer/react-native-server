@@ -1,8 +1,5 @@
 var mongoose = require('mongoose');
 
-var dbUser = 'admin';
-var dbPassword = 'admin';
-
 var dbInfo = {
     user: 'admin',
     password: 'admin',
@@ -36,6 +33,8 @@ function setup() {
         // we're connected!
         console.log('Connected to mongodb (db: <dbname>).'.replace("<dbname>", dbInfo.dbName));
     });
+
+    return db;
 }
 
 module.exports = {

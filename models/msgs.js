@@ -37,3 +37,8 @@ module.exports.updateMsg = function (id, msg, options, callback) {
     };
     Msg.findOneAndUpdate(query, update, options, callback);
 }
+
+module.exports.removeMsgs =  function (callback) {
+    var query = {};
+    Msg.remove(query, callback);
+}

@@ -1,3 +1,7 @@
 node app
 
 https://www.youtube.com/watch?v=1jBtIy3-6Zs
+
+https://medium.com/of-all-things-tech-progress/starting-with-authentication-a-tutorial-with-node-js-and-mongodb-25d524ca0359
+
+https://github.com/DDCSLearning/authenticationIntro/blob/master/routes/router.js
