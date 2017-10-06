@@ -20,10 +20,10 @@ var bodyParser = require('body-parser');
 //     })
 // }));
 
-// //Requests handling (http://johnzhang.io/options-request-in-express)
-// //Parse incoming requests
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: false }));
+//Requests handling (http://johnzhang.io/options-request-in-express)
+//Parse incoming requests
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // //Middleware
 // app.use(function (req, res, next) {
