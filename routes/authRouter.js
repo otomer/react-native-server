@@ -67,7 +67,7 @@ router.post('/', function (req, res, next) {
 // GET route after registering
 router.get('/profile', function (req, res, next) {
   console.log("Checking session for UserId: " + req.session.userId);
-  
+
   User.findById(req.session.userId)
     .exec(function (error, user) {
       if (error) {
@@ -84,7 +84,12 @@ router.get('/profile', function (req, res, next) {
 
         } else {
           console.log("Authenticated.")
-          return res.send('<h1>Name: </h1>' + user.username + '<h2>Mail: </h2>' + user.email + '<h2>UserId: </h2>' + user._id + '<br><a type="button" href="/auth/logout">Logout</a>')
+          if (req.headers.referer) {
+            return res.send('<h1>Name: </h1>' + user.username + '<h2>Mail: </h2>' + user.email + '<h2>UserId: </h2>' + user._id + '<br><a type="button" href="/auth/logout">Logout</a>')
+          } else {
+            res.status(200);
+            return res.send({ username: user.username, email: user.email, userId: user._id })
+          }
         }
       }
     });
@@ -92,13 +97,21 @@ router.get('/profile', function (req, res, next) {
 
 // GET for logout logout
 router.get('/logout', function (req, res, next) {
+  console.log("Logging out");
   if (req.session) {
     // delete session object
     req.session.destroy(function (err) {
       if (err) {
         return next(err);
       } else {
-        return res.redirect('/auth');
+
+        if (req.headers.referer) {
+          return res.redirect('/auth');
+        } else {
+          res.status(200);
+          return res.send({ message: 'logged out' })
+        }
+
       }
     });
   }
