@@ -20,30 +20,30 @@ var bodyParser = require('body-parser');
 //     })
 // }));
 
-//Requests handling (http://johnzhang.io/options-request-in-express)
-//Parse incoming requests
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+// //Requests handling (http://johnzhang.io/options-request-in-express)
+// //Parse incoming requests
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
 
-//Middleware
-app.use(function (req, res, next) {
-    console.log("\r");
-    // var d = dateFormat(Date.now(), "dd/mm/yyyy H:MM:ss TT");
-    // console.log(d + ": " + req.method + " " + req.url);
-    var interceptObj = function (obj, key) { if (obj && Object.keys(obj).length > 0) { console.log(key, obj); } }
-    interceptObj(req.query, "query");
-    interceptObj(req.params, "params");
-    interceptObj(req.body, "body");
-    next();  // Passing the request to the next handler in the stack.
-});
+// //Middleware
+// app.use(function (req, res, next) {
+//     console.log("\r");
+//     // var d = dateFormat(Date.now(), "dd/mm/yyyy H:MM:ss TT");
+//     // console.log(d + ": " + req.method + " " + req.url);
+//     var interceptObj = function (obj, key) { if (obj && Object.keys(obj).length > 0) { console.log(key, obj); } }
+//     interceptObj(req.query, "query");
+//     interceptObj(req.params, "params");
+//     interceptObj(req.body, "body");
+//     next();  // Passing the request to the next handler in the stack.
+// });
 
-// include routes
-app.use('/auth', require('./routes/authRouter'));
-app.use('/api', require('./routes/apiRouter'));
-app.use('/admin', require('./routes/adminRouter'));
+// // include routes
+// app.use('/auth', require('./routes/authRouter'));
+// app.use('/api', require('./routes/apiRouter'));
+// app.use('/admin', require('./routes/adminRouter'));
 
-// serve static files from template
-app.use(express.static(__dirname + '/public'));
+// // serve static files from template
+// app.use(express.static(__dirname + '/public'));
 
 var serverInfo = {
     expressVersion: require('express/package').version,
