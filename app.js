@@ -4,11 +4,11 @@ const port = process.env.PORT || 3000;
 var bodyParser = require('body-parser');
 
 //var dateFormat = require('dateformat');
- var session = require('express-session');
+// var session = require('express-session');
 // var MongoStore = require('connect-mongo')(session);
 
-// var db = require('./config/db');
-// var dbConnection = db.setup();
+ var db = require('./config/db');
+ var dbConnection = db.setup();
 
 // //use sessions for tracking logins
 // app.use(session({
