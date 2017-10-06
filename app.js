@@ -37,12 +37,12 @@ app.use(function (req, res, next) {
 });
 
 // include routes
-//app.use('/auth', require('./routes/authRouter'));
-//app.use('/api', require('./routes/apiRouter'));
-//app.use('/admin', require('./routes/adminRouter'));
+app.use('/auth', require('./routes/authRouter'));
+app.use('/api', require('./routes/apiRouter'));
+app.use('/admin', require('./routes/adminRouter'));
 
 // serve static files from template
-//app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public'));
 
 var serverInfo = {
     expressVersion: require('express/package').version,
