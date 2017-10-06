@@ -3,44 +3,44 @@ var app = express();
 const port = process.env.PORT || 3000;
 var bodyParser = require('body-parser');
 
-var dateFormat = require('dateformat');
-var session = require('express-session');
-var MongoStore = require('connect-mongo')(session);
+// var dateFormat = require('dateformat');
+// var session = require('express-session');
+// var MongoStore = require('connect-mongo')(session);
 
-var db = require('./config/db');
-var dbConnection = db.setup();
+// var db = require('./config/db');
+// var dbConnection = db.setup();
 
-//use sessions for tracking logins
-app.use(session({
-    secret: 'work hard',
-    resave: true,
-    saveUninitialized: false,
-    store: new MongoStore({
-        mongooseConnection: dbConnection
-    })
-}));
+// //use sessions for tracking logins
+// app.use(session({
+//     secret: 'work hard',
+//     resave: true,
+//     saveUninitialized: false,
+//     store: new MongoStore({
+//         mongooseConnection: dbConnection
+//     })
+// }));
 
-//Requests handling (http://johnzhang.io/options-request-in-express)
-//Parse incoming requests
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+// //Requests handling (http://johnzhang.io/options-request-in-express)
+// //Parse incoming requests
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
 
-//Middleware
-app.use(function (req, res, next) {
-    console.log("\r");
-    var d = dateFormat(Date.now(), "dd/mm/yyyy H:MM:ss TT");
-    console.log(d + ": " + req.method + " " + req.url);
-    var interceptObj = function (obj, key) { if (obj && Object.keys(obj).length > 0) { console.log(key, obj); } }
-    interceptObj(req.query, "query");
-    interceptObj(req.params, "params");
-    interceptObj(req.body, "body");
-    next();  // Passing the request to the next handler in the stack.
-});
+// //Middleware
+// app.use(function (req, res, next) {
+//     console.log("\r");
+//     var d = dateFormat(Date.now(), "dd/mm/yyyy H:MM:ss TT");
+//     console.log(d + ": " + req.method + " " + req.url);
+//     var interceptObj = function (obj, key) { if (obj && Object.keys(obj).length > 0) { console.log(key, obj); } }
+//     interceptObj(req.query, "query");
+//     interceptObj(req.params, "params");
+//     interceptObj(req.body, "body");
+//     next();  // Passing the request to the next handler in the stack.
+// });
 
-// include routes
-app.use('/auth', require('./routes/authRouter'));
-app.use('/api', require('./routes/apiRouter'));
-app.use('/admin', require('./routes/adminRouter'));
+// // include routes
+// app.use('/auth', require('./routes/authRouter'));
+// app.use('/api', require('./routes/apiRouter'));
+// app.use('/admin', require('./routes/adminRouter'));
 
 // serve static files from template
 app.use(express.static(__dirname + '/public'));
