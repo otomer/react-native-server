@@ -3,9 +3,9 @@ var app = express();
 const port = process.env.PORT || 3000;
 var bodyParser = require('body-parser');
 
-var dateFormat = require('dateformat');
-// var session = require('express-session');
-// var MongoStore = require('connect-mongo')(session);
+//var dateFormat = require('dateformat');
+ var session = require('express-session');
+ var MongoStore = require('connect-mongo')(session);
 
 // var db = require('./config/db');
 // var dbConnection = db.setup();
