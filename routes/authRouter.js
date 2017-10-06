@@ -67,6 +67,7 @@ router.post('/', function (req, res, next) {
 // GET route after registering
 router.get('/profile', function (req, res, next) {
   console.log("Checking session for UserId: " + req.session.userId);
+  
   User.findById(req.session.userId)
     .exec(function (error, user) {
       if (error) {
