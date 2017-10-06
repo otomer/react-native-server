@@ -28,8 +28,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //Middleware
 app.use(function (req, res, next) {
     console.log("\r");
-    var d = "A";//dateFormat(Date.now(), "dd/mm/yyyy H:MM:ss TT");
-    console.log(d + ": " + req.method + " " + req.url);
+    // var d = dateFormat(Date.now(), "dd/mm/yyyy H:MM:ss TT");
+    // console.log(d + ": " + req.method + " " + req.url);
     var interceptObj = function (obj, key) { if (obj && Object.keys(obj).length > 0) { console.log(key, obj); } }
     interceptObj(req.query, "query");
     interceptObj(req.params, "params");
@@ -48,7 +48,7 @@ app.use(express.static(__dirname + '/public'));
 var serverInfo = {
     expressVersion: require('express/package').version,
     port: port,
-    upTime: "A",//dateFormat(Date.now(), "dd/mm/yyyy H:MM:ss TT"),
+    //upTime: dateFormat(Date.now(), "dd/mm/yyyy H:MM:ss TT"),
     authTester: "Navigate to /auth/"
 }
 
