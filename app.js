@@ -3,7 +3,12 @@ var app = express();
 const port = process.env.PORT || 3000;
 var bodyParser = require('body-parser');
 
-//var dateFormat = require('dateformat');
+try {
+var dateFormat = require('dateformat');
+
+}catch(ex) {
+
+}
 // var session = require('express-session');
 // var MongoStore = require('connect-mongo')(session);
 
