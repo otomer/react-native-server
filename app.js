@@ -3,11 +3,12 @@ var app = express();
 const port = process.env.PORT || 3000;
 var bodyParser = require('body-parser');
 
+var lasterr = "";
 try {
 var dateFormat = require('dateformat');
 
 }catch(ex) {
-
+lasterr = ex.message;
 }
 // var session = require('express-session');
 // var MongoStore = require('connect-mongo')(session);
@@ -58,6 +59,7 @@ var serverInfo = {
 }
 
 app.get('/', function (req, res) {
+    serverInfo.lasterr = lasterr;
     res.send(serverInfo);
 })
 
