@@ -42,8 +42,8 @@ app.use(function (req, res, next) {
 // app.use('/api', require('./routes/apiRouter'));
 // app.use('/admin', require('./routes/adminRouter'));
 
-// // serve static files from template
-// app.use(express.static(__dirname + '/public'));
+// serve static files from template
+app.use(express.static(__dirname + '/public'));
 
 var serverInfo = {
     expressVersion: require('express/package').version,
