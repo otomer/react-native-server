@@ -8,7 +8,7 @@ try {
 var dateFormat = require('dateformat');
 
 }catch(ex) {
-lasterr = "C";
+lasterr = ex;
 }
 // var session = require('express-session');
 // var MongoStore = require('connect-mongo')(session);
