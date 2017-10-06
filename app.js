@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 
 //var dateFormat = require('dateformat');
  var session = require('express-session');
- var MongoStore = require('connect-mongo')(session);
+// var MongoStore = require('connect-mongo')(session);
 
 // var db = require('./config/db');
 // var dbConnection = db.setup();
