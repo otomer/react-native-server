@@ -3,28 +3,21 @@ var app = express();
 const port = process.env.PORT || 3000;
 var bodyParser = require('body-parser');
 
-var lasterr = "";
-try {
 var dateFormat = require('dateformat');
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
+var db = require('./config/db');
+var dbConnection = db.setup();
 
-}catch(ex) {
-lasterr = ex;
-}
-// var session = require('express-session');
-// var MongoStore = require('connect-mongo')(session);
-
- var db = require('./config/db');
- var dbConnection = db.setup();
-
-// //use sessions for tracking logins
-// app.use(session({
-//     secret: 'work hard',
-//     resave: true,
-//     saveUninitialized: false,
-//     store: new MongoStore({
-//         mongooseConnection: dbConnection
-//     })
-// }));
+//use sessions for tracking logins
+app.use(session({
+    secret: 'work hard',
+    resave: true,
+    saveUninitialized: false,
+    store: new MongoStore({
+        mongooseConnection: dbConnection
+    })
+}));
 
 //Requests handling (http://johnzhang.io/options-request-in-express)
 //Parse incoming requests
