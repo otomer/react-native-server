@@ -38,7 +38,19 @@ router.post('/', function (req, res, next) {
 
     User.create(userData, function (error, user) {
       if (error) {
-        return next(error);
+        console.log(error.message);
+        if (11000 === error.code || 11001 === error.code) {
+          var field = error.message.split('index: appdb.')[1].split('.$')[1]
+          field = field.split(' dup key')[0]
+          field = field.substring(0, field.lastIndexOf('_')) // returns email
+          error = 'Duplicate key: ' + field + ' \'' + userData[field] + '\' is already taken';
+        }
+        // console.log(error);
+         var err = new Error(error);
+         err.status = 400;
+         res.status(400);
+
+        return next(err);
       } else {
         req.session.userId = user._id;
         console.log("User created. User ID = ", user._id);
