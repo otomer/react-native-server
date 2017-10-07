@@ -9,6 +9,7 @@ router.get('/test', function (req, res) {
 //POST route for updating data
 router.post('/', function (req, res, next) {
 
+  //PASSWORD VALIDATION
   if (req.body.password !== req.body.passwordConf) {
     var errorMessage = "Passwords do not match";
     var err = new Error(errorMessage);
@@ -24,6 +25,7 @@ router.post('/', function (req, res, next) {
     //return next(err);
   }
 
+  //REGISTER
   if (req.body.email && req.body.username && req.body.password && req.body.passwordConf) {
     console.log("User creation flow");
 
@@ -45,7 +47,9 @@ router.post('/', function (req, res, next) {
       }
     });
 
-  } else if (req.body.logemail && req.body.logpassword) {
+  }
+  //LOGIN
+  else if (req.body.logemail && req.body.logpassword) {
     console.log("Authentication flow");
     User.authenticate(req.body.logemail, req.body.logpassword, function (error, user) {
       if (error || !user) {
